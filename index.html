@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0035)https://nxpsomwl.gensparkspace.com/ -->
+<!-- saved from url=(0035)https://nxyeelmh.gensparkspace.com/ -->
 <html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
     <style>
         @font-face {
             font-family: 'DragonFont';
-            src: url('https://gensparkstorageprodwest.blob.core.windows.net/web-drive/5b4ab577-15e1-49ee-84b5-18ecb3629fd9/980bf299-418f-4f77-8b6e-d099c7f0b225?se=2025-05-25T06%3A59%3A07Z&sp=r&sv=2025-05-05&sr=b&sig=hCQ%2BKbLEvs4QSOlOUod1nJH3cf1ECt5QVJ3gCZYN9A8%3D') format('opentype');
+            src: url('./dragon_font_regular.otf') format('opentype');
             font-display: swap;
         }
 
@@ -18,99 +18,135 @@
         }
 
         body {
-            font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+            font-family: 'Hiragino Sans', 'ヒラギノ角ゴシック', 'Yu Gothic', '游ゴシック', 'Meiryo', 'メイリオ', sans-serif;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            min-height: 100vh;
             color: #ffffff;
-            background-image: url('https://page1.genspark.site/v1/base64_upload/466a8648e7d224c808e801e66267a0f0');
-            background-size: 50%;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-attachment: fixed;
+            min-height: 100vh;
             position: relative;
+            overflow-x: hidden;
         }
 
-        body::before {
-            content: '';
+        .futomani-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(26, 26, 46, 0.7);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100vmin;
+            height: 100vmin;
+            opacity: 0.15;
             z-index: -1;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.3) 0%, rgba(75, 0, 130, 0.2) 30%, rgba(25, 25, 112, 0.1) 60%, transparent 100%);
+            border-radius: 50%;
+        }
+
+        .futomani-pattern {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: conic-gradient(
+                from 0deg,
+                #9b59b6 0deg,
+                #3498db 60deg,
+                #f1c40f 120deg,
+                #e74c3c 180deg,
+                #2ecc71 240deg,
+                #9b59b6 300deg,
+                #3498db 360deg
+            );
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: rotate 60s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
         .container {
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
         }
 
         .title {
-            text-align: center;
             font-size: 2.5rem;
             font-weight: bold;
-            background: linear-gradient(45deg, #ff6b9d, #c44fc4, #6c5ce7);
+            background: linear-gradient(45deg, #ff6b9d, #c44569, #6c5ce7, #a29bfe);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             margin-bottom: 10px;
         }
 
         .subtitle {
-            text-align: center;
             font-size: 1.1rem;
             color: #ffd700;
-            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            font-weight: 300;
         }
 
-        .section {
+        .card {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
             padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            color: #333;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .section-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #6c5ce7;
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #6c5ce7;
+            margin-bottom: 20px;
+            justify-content: center;
         }
 
-        .daily-section {
+        .today-guardian {
             text-align: center;
         }
 
-        .roulette-container {
+        .roulette-area {
             position: relative;
             width: 300px;
             height: 300px;
             margin: 30px auto;
-            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
             border-radius: 50%;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
             overflow: hidden;
         }
 
-        .roulette-text {
+        .roulette-character {
             font-family: 'DragonFont', serif;
             font-size: 120px;
             color: #2c3e50;
             text-shadow: 
-                0 0 20px rgba(255, 215, 0, 0.8),
-                0 0 40px rgba(255, 215, 0, 0.6),
-                0 0 60px rgba(255, 215, 0, 0.4),
-                3px 3px 0 rgba(0, 0, 0, 0.3);
+                3px 3px 0px #ffd700,
+                -3px -3px 0px #ffd700,
+                3px -3px 0px #ffd700,
+                -3px 3px 0px #ffd700,
+                0px 5px 10px rgba(0,0,0,0.5);
             position: absolute;
             top: 50%;
             left: 50%;
@@ -118,125 +154,41 @@
             z-index: 10;
         }
 
-        .roulette-text.spinning {
-            animation: roulette-spin 3s ease-out;
-        }
-
-        .roulette-text.result {
-            animation: result-sparkle 2s infinite, rainbow-text 3s infinite;
-        }
-
-        @keyframes roulette-spin {
-            0% { opacity: 1; }
-            20% { opacity: 0.3; }
-            40% { opacity: 1; }
-            60% { opacity: 0.3; }
-            80% { opacity: 1; }
-            100% { opacity: 1; }
-        }
-
-        @keyframes result-sparkle {
-            0%, 100% { 
-                transform: translate(-50%, -50%) scale(1);
-                text-shadow: 
-                    0 0 20px rgba(255, 215, 0, 0.8),
-                    0 0 40px rgba(255, 215, 0, 0.6),
-                    0 0 60px rgba(255, 215, 0, 0.4),
-                    3px 3px 0 rgba(0, 0, 0, 0.3);
-            }
-            50% { 
-                transform: translate(-50%, -50%) scale(1.1);
-                text-shadow: 
-                    0 0 30px rgba(255, 215, 0, 1),
-                    0 0 60px rgba(255, 215, 0, 0.8),
-                    0 0 90px rgba(255, 215, 0, 0.6),
-                    0 0 120px rgba(255, 255, 255, 0.4),
-                    3px 3px 0 rgba(0, 0, 0, 0.3);
-            }
-        }
-
-        @keyframes rainbow-text {
-            0% { color: #ff6b9d; }
-            16% { color: #ff8a5b; }
-            32% { color: #ffd93d; }
-            48% { color: #6bcf7f; }
-            64% { color: #4dabf7; }
-            80% { color: #9775fa; }
-            100% { color: #ff6b9d; }
-        }
-
-        .sparkle-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .sparkle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #ffd700;
-            border-radius: 50%;
-            animation: sparkle-float 2s infinite ease-in-out;
-        }
-
-        @keyframes sparkle-float {
-            0%, 100% {
-                opacity: 0;
-                transform: translateY(0) scale(0);
-            }
-            50% {
-                opacity: 1;
-                transform: translateY(-50px) scale(1);
-            }
-        }
-
         .roulette-btn {
-            background: linear-gradient(45deg, #ff6b9d, #c44fc4);
+            background: linear-gradient(45deg, #ff6b9d, #ee5a6f);
             color: white;
             border: none;
-            padding: 15px 30px;
-            border-radius: 30px;
+            padding: 15px 40px;
+            border-radius: 50px;
             font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
-            margin: 20px 0;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+            box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
+            margin-bottom: 20px;
         }
 
         .roulette-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 107, 157, 0.4);
         }
 
         .fortune-result {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 25px;
             border-radius: 15px;
             margin-top: 20px;
-            display: none;
+            text-align: left;
         }
 
-        .fortune-result.show {
-            display: block;
-            animation: fade-in-up 0.8s ease-out;
-        }
-
-        @keyframes fade-in-up {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .fortune-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
         }
 
         .input-group {
@@ -245,15 +197,15 @@
 
         .input-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
             color: #333;
+            font-weight: bold;
+            margin-bottom: 8px;
         }
 
         .input-group input {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
             border-radius: 10px;
             font-size: 1rem;
             background: rgba(255, 255, 255, 0.9);
@@ -264,199 +216,303 @@
         .input-group input:focus {
             outline: none;
             border-color: #6c5ce7;
-            box-shadow: 0 0 10px rgba(108, 92, 231, 0.3);
+            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
         }
 
         .diagnose-btn {
-            background: linear-gradient(45deg, #6c5ce7, #a855f7);
+            background: linear-gradient(45deg, #ff6b9d, #c44569);
             color: white;
             border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-size: 1rem;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+            display: block;
+            margin: 20px auto;
+            box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
         }
 
         .diagnose-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 107, 157, 0.4);
         }
 
-        .name-display {
+        .dragon-name-display {
             text-align: center;
             margin: 30px 0;
         }
 
-        .name-display h3 {
+        .dragon-name-title {
             color: #6c5ce7;
+            font-size: 1.1rem;
             margin-bottom: 15px;
         }
 
-        .ryutai-name {
+        .dragon-characters {
             font-family: 'DragonFont', serif;
-            font-size: 120px;
-            color: #2c3e50;
+            font-size: 48px;
+            color: #ffd700;
             text-shadow: 
-                2px 2px 0 #ffd700,
-                -2px -2px 0 #ffd700,
-                2px -2px 0 #ffd700,
-                -2px 2px 0 #ffd700,
-                4px 4px 8px rgba(0, 0, 0, 0.3);
-            margin: 20px 0;
+                2px 2px 0px #2c3e50,
+                -2px -2px 0px #2c3e50,
+                2px -2px 0px #2c3e50,
+                -2px 2px 0px #2c3e50,
+                0px 3px 6px rgba(0,0,0,0.5);
+            line-height: 1.2;
+            margin-bottom: 20px;
             display: flex;
             justify-content: center;
+            align-items: center;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
         }
 
-        .guardian-char {
+        .guardian-character {
             font-family: 'DragonFont', serif;
             font-size: 160px;
-            color: #2c3e50;
+            color: #ffd700;
             text-shadow: 
-                0 0 20px rgba(255, 215, 0, 0.8),
-                0 0 40px rgba(255, 215, 0, 0.6),
-                0 0 60px rgba(255, 215, 0, 0.4),
-                3px 3px 0 rgba(0, 0, 0, 0.3);
-            animation: guardian-sparkle 2s infinite, guardian-pulse 3s infinite;
+                3px 3px 0px #2c3e50,
+                -3px -3px 0px #2c3e50,
+                3px -3px 0px #2c3e50,
+                -3px 3px 0px #2c3e50,
+                0px 5px 10px rgba(0,0,0,0.5);
+            margin: 20px 0;
             position: relative;
             display: inline-block;
         }
 
-        @keyframes guardian-sparkle {
-            0%, 100% { 
+        .sparkle-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .sparkle {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .sparkle::before {
+            content: "✨";
+            position: absolute;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1) rotate(180deg);
+            }
+        }
+
+        .guardian-pulse {
+            animation: guardianPulse 3s infinite;
+        }
+
+        @keyframes guardianPulse {
+            0%, 100% {
                 transform: scale(1);
-                text-shadow: 
-                    0 0 20px rgba(255, 215, 0, 0.8),
-                    0 0 40px rgba(255, 215, 0, 0.6),
-                    0 0 60px rgba(255, 215, 0, 0.4),
-                    3px 3px 0 rgba(0, 0, 0, 0.3);
+                filter: brightness(1);
             }
-            50% { 
+            50% {
                 transform: scale(1.05);
-                text-shadow: 
-                    0 0 30px rgba(255, 215, 0, 1),
-                    0 0 60px rgba(255, 215, 0, 0.8),
-                    0 0 90px rgba(255, 215, 0, 0.6),
-                    0 0 120px rgba(255, 255, 255, 0.4),
-                    3px 3px 0 rgba(0, 0, 0, 0.3);
+                filter: brightness(1.2);
             }
         }
 
-        @keyframes guardian-pulse {
-            0% { color: #2c3e50; }
-            25% { color: #e74c3c; }
-            50% { color: #3498db; }
-            75% { color: #9b59b6; }
-            100% { color: #2c3e50; }
-        }
-
-        .diagnosis-result {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+        .result-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 25px;
             border-radius: 15px;
             margin-top: 20px;
-            display: none;
         }
 
-        .diagnosis-result.show {
-            display: block;
-            animation: fade-in-up 0.8s ease-out;
+        .result-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
         }
 
-        .compatibility-result {
-            background: linear-gradient(45deg, #f093fb, #f5576c);
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
+        .compatibility-section {
             margin-top: 20px;
-            display: none;
         }
 
-        .compatibility-result.show {
+        .compatibility-btn {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
             display: block;
-            animation: fade-in-up 0.8s ease-out;
+            margin: 20px auto;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        .compatibility-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.4);
         }
 
         .dragon-rank {
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
             font-size: 1.5rem;
             font-weight: bold;
-            text-align: center;
-            margin: 20px 0;
-            padding: 15px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.2);
         }
 
-        .rank-red { background: linear-gradient(45deg, #ff6b6b, #ee5a52); }
-        .rank-yellow { background: linear-gradient(45deg, #feca57, #ff9ff3); }
-        .rank-blue { background: linear-gradient(45deg, #54a0ff, #5f27cd); }
-        .rank-white { background: linear-gradient(45deg, #f1f2f6, #ddd); color: #333; }
-        .rank-rainbow { 
-            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3, #54a0ff);
-            animation: rainbow-bg 3s infinite;
-        }
+        .rank-red { background: linear-gradient(45deg, #e74c3c, #c0392b); }
+        .rank-yellow { background: linear-gradient(45deg, #f1c40f, #f39c12); }
+        .rank-blue { background: linear-gradient(45deg, #3498db, #2980b9); }
+        .rank-white { background: linear-gradient(45deg, #ecf0f1, #bdc3c7); color: #2c3e50; }
+        .rank-rainbow { background: linear-gradient(45deg, #ff6b9d, #c44569, #6c5ce7, #a29bfe, #00cec9); }
 
-        @keyframes rainbow-bg {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .share-section {
+        .share-buttons {
             text-align: center;
             margin-top: 30px;
             padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            border-top: 1px solid rgba(108, 92, 231, 0.3);
         }
 
         .share-btn {
-            background: linear-gradient(45deg, #1da1f2, #0984e3);
+            background: linear-gradient(45deg, #1da1f2, #0d8bd9);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
+            padding: 12px 30px;
+            border-radius: 25px;
             font-size: 0.9rem;
             cursor: pointer;
-            margin: 0 10px;
+            margin: 5px;
             transition: all 0.3s ease;
         }
 
         .share-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(29, 161, 242, 0.4);
+            box-shadow: 0 10px 20px rgba(29, 161, 242, 0.3);
+        }
+
+        .reset-btn {
+            background: linear-gradient(45deg, #95a5a6, #7f8c8d);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .reset-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(149, 165, 166, 0.3);
         }
 
         .copyright {
             text-align: center;
             margin-top: 40px;
+            padding: 20px;
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.9rem;
         }
 
+        .roulette-spinning {
+            animation: rouletteSpin 0.1s linear infinite;
+        }
+
+        @keyframes rouletteSpin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .mega-sparkle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        .mega-sparkle-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #ffd700, #ff6b9d);
+            border-radius: 50%;
+            animation: megaSparkleFloat 3s infinite;
+        }
+
+        @keyframes megaSparkleFloat {
+            0%, 100% {
+                opacity: 0;
+                transform: translate(0, 0) scale(0);
+            }
+            25% {
+                opacity: 1;
+                transform: translate(var(--random-x, 0), var(--random-y, 0)) scale(1);
+            }
+            75% {
+                opacity: 1;
+                transform: translate(var(--random-x2, 0), var(--random-y2, 0)) scale(1.5);
+            }
+        }
+
+        .rainbow-text {
+            background: linear-gradient(45deg, 
+                #ff6b9d, #c44569, #6c5ce7, #a29bfe, 
+                #00cec9, #55a3ff, #ffd700, #ff7675);
+            background-size: 400% 400%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowMove 4s ease-in-out infinite;
+        }
+
+        @keyframes rainbowMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
         @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
             .title {
                 font-size: 2rem;
             }
             
-            .roulette-container {
+            .roulette-area {
                 width: 250px;
                 height: 250px;
             }
             
-            .roulette-text {
+            .roulette-character {
                 font-size: 100px;
             }
             
-            .ryutai-name {
-                font-size: 80px;
+            .guardian-character {
+                font-size: 120px;
             }
             
-            .guardian-char {
-                font-size: 120px;
+            .dragon-characters {
+                font-size: 36px;
             }
         }
     </style>
@@ -562,31 +618,42 @@
     }
   </style></head>
 <body>
-    <div class="container">
-        <h1 class="title">龍体文字占い＆相性診断</h1>
-        <p class="subtitle">あなたの名前に宿る神秘的な力を探る</p>
+    <div class="futomani-bg">
+        <div class="futomani-pattern"></div>
+    </div>
 
-        <!-- 今日の守護文字セクション -->
-        <div class="section daily-section">
-            <h2 class="section-title">🎲 今日のあなたを守ってくれる龍体文字</h2>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">龍体文字占い＆相性診断</h1>
+            <p class="subtitle">あなたの名前に宿る神秘的な力を探る</p>
+        </header>
+
+        <!-- 今日の守護龍体文字 -->
+        <div class="card">
+            <h2 class="section-title">
+                🔮 今日のあなたを守ってくれる龍体文字
+            </h2>
             
-            <div class="roulette-container">
-                <div class="roulette-text" id="rouletteText">あ</div>
-                <div class="sparkle-container" id="sparkleContainer"></div>
-            </div>
-            
-            <button class="roulette-btn" onclick="startRoulette()">今日の守護文字を選ぶ</button>
-            
-            <div class="fortune-result" id="fortuneResult">
-                <h3>🍀 今日の運気</h3>
-                <p id="fortuneDescription"></p>
-                <h4>💎 開運ポイント</h4>
-                <p id="fortuneAdvice"></p>
+            <div class="today-guardian">
+                <button class="roulette-btn" onclick="startTodayRoulette()">今日の守護文字を選ぶ</button>
+                
+                <div class="roulette-area" id="todayRouletteArea">
+                    <div class="roulette-character" id="todayRouletteChar">あ</div>
+                    <div class="mega-sparkle" id="todayMegaSparkle"></div>
+                </div>
+                
+                <div id="todayFortuneResult" class="fortune-result" style="display: none;">
+                    <div class="fortune-title">🍀 今日の運気</div>
+                    <div id="todayFortuneText"></div>
+                    
+                    <div class="fortune-title" style="margin-top: 20px;">💎 開運ポイント</div>
+                    <div id="todayLuckyPoint"></div>
+                </div>
             </div>
         </div>
 
-        <!-- 名前診断セクション -->
-        <div class="section">
+        <!-- 名前診断 -->
+        <div class="card">
             <h2 class="section-title">📜 あなたの名前診断</h2>
             
             <div class="input-group">
@@ -596,22 +663,22 @@
             
             <button class="diagnose-btn" onclick="diagnoseName()">名前を診断する</button>
             
-            <div class="name-display" id="nameDisplay" style="display: none;">
-                <h3>あなたの名前を龍体文字で表示</h3>
-                <div class="ryutai-name" id="ryutaiName"></div>
-                <div style="text-align: center; margin: 30px 0;">
-                    <div class="guardian-char" id="guardianChar"></div>
+            <div id="nameDisplay" class="dragon-name-display" style="display: none;">
+                <div class="dragon-name-title">あなたの名前を龍体文字で表示</div>
+                <div class="dragon-characters" id="dragonNameChars"></div>
+                <div class="sparkle-container">
+                    <div class="guardian-character guardian-pulse" id="guardianChar"></div>
                 </div>
             </div>
             
-            <div class="diagnosis-result" id="diagnosisResult">
-                <h3>📊 あなたの龍体文字鑑定書</h3>
-                <div id="diagnosisContent"></div>
+            <div id="nameResult" class="result-section" style="display: none;">
+                <div class="result-title">📊 あなたの龍体文字鑑定書</div>
+                <div id="nameAnalysis"></div>
             </div>
         </div>
 
-        <!-- 相性診断セクション -->
-        <div class="section">
+        <!-- 相性診断 -->
+        <div class="card">
             <h2 class="section-title">💕 相性診断</h2>
             
             <div class="input-group">
@@ -619,27 +686,28 @@
                 <input type="text" id="partnerName" placeholder="やまだはなこ">
             </div>
             
-            <button class="diagnose-btn" onclick="diagnoseCompatibility()">相性診断する</button>
+            <button class="compatibility-btn" onclick="checkCompatibility()">相性診断する</button>
             
-            <div class="compatibility-result" id="compatibilityResult">
-                <h3>💖 相性診断結果</h3>
-                <div id="compatibilityContent"></div>
+            <div id="compatibilityResult" class="result-section" style="display: none;">
+                <div class="result-title">💖 相性診断結果</div>
+                <div id="compatibilityAnalysis"></div>
             </div>
         </div>
 
-        <div class="share-section">
-            <h3>結果をシェアしよう！</h3>
-            <button class="share-btn" onclick="shareToTwitter()">Twitterでシェア</button>
-            <button class="share-btn" onclick="shareToInstagram()">Instagramでシェア</button>
-        </div>
-
-        <div class="copyright">
-            © 2025 DLM-okinawa
+        <!-- シェアボタン -->
+        <div class="share-buttons">
+            <button class="share-btn" onclick="shareTwitter()">🐦 Twitterでシェア</button>
+            <button class="share-btn" onclick="shareInstagram()">📸 Instagram投稿</button>
+            <button class="reset-btn" onclick="resetAll()">🔄 もう一回診断する</button>
         </div>
     </div>
 
+    <footer class="copyright">
+        © 2025 DLM-okinawa
+    </footer>
+
     <script>
-        // 龍体文字の意味データベース
+        // 龍体文字の意味データ
         const ryutaiMeanings = {
             'あ': '天のエネルギー、自分の意識を高める、愛、宇宙から注ぐ愛のエネルギー',
             'い': '心を整える、身体のバランスを整える、幸せを呼ぶ',
@@ -691,8 +759,10 @@
             'ん': '終わりを意味する、不眠改善'
         };
 
-        // 龍体文字変換関数
+        // 龍体文字変換ルール
         function convertToRyutai(text) {
+            let converted = text;
+            
             // 濁点・半濁点の除去
             const dakutenMap = {
                 'が': 'か', 'ぎ': 'き', 'ぐ': 'く', 'げ': 'け', 'ご': 'こ',
@@ -701,143 +771,175 @@
                 'ば': 'は', 'び': 'ひ', 'ぶ': 'ふ', 'べ': 'へ', 'ぼ': 'ほ',
                 'ぱ': 'は', 'ぴ': 'ひ', 'ぷ': 'ふ', 'ぺ': 'へ', 'ぽ': 'ほ'
             };
-
-            // 小文字の大文字変換
+            
+            // 小文字の変換
             const smallCharMap = {
                 'ゃ': 'や', 'ゅ': 'ゆ', 'ょ': 'よ',
                 'ぁ': 'あ', 'ぃ': 'い', 'ぅ': 'う', 'ぇ': 'え', 'ぉ': 'お',
                 'っ': 'つ'
             };
-
-            let result = '';
-            for (let char of text) {
-                if (dakutenMap[char]) {
-                    result += dakutenMap[char];
-                } else if (smallCharMap[char]) {
-                    result += smallCharMap[char];
-                } else {
-                    result += char;
-                }
+            
+            // 特殊な組み合わせの変換
+            converted = converted.replace(/じゃ/g, 'しや')
+                              .replace(/じゅ/g, 'しゆ')
+                              .replace(/じょ/g, 'しよ')
+                              .replace(/しゃ/g, 'しや')
+                              .replace(/しゅ/g, 'しゆ')
+                              .replace(/しょ/g, 'しよ')
+                              .replace(/ちゃ/g, 'ちや')
+                              .replace(/ちゅ/g, 'ちゆ')
+                              .replace(/ちょ/g, 'ちよ');
+            
+            // 濁点・半濁点の変換
+            for (let [dakuten, clean] of Object.entries(dakutenMap)) {
+                converted = converted.replace(new RegExp(dakuten, 'g'), clean);
             }
-
-            // 拗音の変換（しゃ→しや）
-            result = result.replace(/([しちにひみりぎじびぴ])([やゆよ])/g, '$1$2');
-
-            return result;
+            
+            // 小文字の変換
+            for (let [small, large] of Object.entries(smallCharMap)) {
+                converted = converted.replace(new RegExp(small, 'g'), large);
+            }
+            
+            return converted;
         }
 
-        // ルーレット機能
-        function startRoulette() {
-            const chars = Object.keys(ryutaiMeanings);
-            const rouletteText = document.getElementById('rouletteText');
-            const fortuneResult = document.getElementById('fortuneResult');
-            
-            // スパークル生成
-            createSparkles();
-            
-            rouletteText.classList.add('spinning');
-            fortuneResult.classList.remove('show');
-            
-            let counter = 0;
-            const interval = setInterval(() => {
-                rouletteText.textContent = chars[Math.floor(Math.random() * chars.length)];
-                counter++;
-                
-                if (counter > 20) {
-                    clearInterval(interval);
-                    const finalChar = chars[Math.floor(Math.random() * chars.length)];
-                    rouletteText.textContent = finalChar;
-                    rouletteText.classList.remove('spinning');
-                    rouletteText.classList.add('result');
-                    
-                    setTimeout(() => {
-                        showFortuneResult(finalChar);
-                    }, 500);
-                }
-            }, 150);
-        }
-
-        function createSparkles() {
-            const container = document.getElementById('sparkleContainer');
+        // キラキラアニメーション生成
+        function createMegaSparkles(containerId) {
+            const container = document.getElementById(containerId);
             container.innerHTML = '';
             
             for (let i = 0; i < 20; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.className = 'sparkle';
-                sparkle.style.left = Math.random() * 100 + '%';
-                sparkle.style.top = Math.random() * 100 + '%';
-                sparkle.style.animationDelay = Math.random() * 2 + 's';
-                container.appendChild(sparkle);
+                const particle = document.createElement('div');
+                particle.className = 'mega-sparkle-particle';
+                particle.style.setProperty('--random-x', `${(Math.random() - 0.5) * 200}px`);
+                particle.style.setProperty('--random-y', `${(Math.random() - 0.5) * 200}px`);
+                particle.style.setProperty('--random-x2', `${(Math.random() - 0.5) * 300}px`);
+                particle.style.setProperty('--random-y2', `${(Math.random() - 0.5) * 300}px`);
+                particle.style.animationDelay = `${Math.random() * 3}s`;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                container.appendChild(particle);
             }
         }
 
-        function showFortuneResult(char) {
-            const meaning = ryutaiMeanings[char];
-            const fortuneResult = document.getElementById('fortuneResult');
-            const fortuneDescription = document.getElementById('fortuneDescription');
-            const fortuneAdvice = document.getElementById('fortuneAdvice');
+        // 今日の龍体文字ルーレット
+        function startTodayRoulette() {
+            const chars = Object.keys(ryutaiMeanings);
+            const rouletteChar = document.getElementById('todayRouletteChar');
+            const resultDiv = document.getElementById('todayFortuneResult');
             
-            fortuneDescription.textContent = `龍体文字「${char}」の力があなたを守ります。${meaning}`;
-            fortuneAdvice.textContent = 'この文字のエネルギーを意識して行動することで、より良い一日を過ごせるでしょう。';
+            resultDiv.style.display = 'none';
+            rouletteChar.classList.add('roulette-spinning');
             
-            fortuneResult.classList.add('show');
+            let count = 0;
+            const maxCount = 30 + Math.floor(Math.random() * 20);
+            
+            const spin = setInterval(() => {
+                const randomChar = chars[Math.floor(Math.random() * chars.length)];
+                rouletteChar.textContent = randomChar;
+                count++;
+                
+                if (count >= maxCount) {
+                    clearInterval(spin);
+                    rouletteChar.classList.remove('roulette-spinning');
+                    
+                    const finalChar = chars[Math.floor(Math.random() * chars.length)];
+                    rouletteChar.textContent = finalChar;
+                    
+                    // キラキラアニメーション追加
+                    createMegaSparkles('todayMegaSparkle');
+                    
+                    // 結果表示
+                    setTimeout(() => {
+                        showTodayFortune(finalChar);
+                    }, 500);
+                }
+            }, 100);
         }
 
-        // 名前診断機能
+        function showTodayFortune(char) {
+            const resultDiv = document.getElementById('todayFortuneResult');
+            const fortuneText = document.getElementById('todayFortuneText');
+            const luckyPoint = document.getElementById('todayLuckyPoint');
+            
+            const meaning = ryutaiMeanings[char];
+            
+            fortuneText.textContent = `今日は「${char}」の文字があなたを特別に力強く守ってくれます。${meaning}のエネルギーに包まれる一日となるでしょう。`;
+            
+            luckyPoint.textContent = `この文字のエネルギーを意識して行動することで、より良い一日を過ごすことができるでしょう。`;
+            
+            resultDiv.style.display = 'block';
+        }
+
+        // 名前診断
         function diagnoseName() {
             const userName = document.getElementById('userName').value.trim();
             if (!userName) {
                 alert('名前を入力してください');
                 return;
             }
-
-            const convertedName = convertToRyutai(userName);
-            const nameDisplay = document.getElementById('nameDisplay');
-            const ryutaiName = document.getElementById('ryutaiName');
-            const guardianChar = document.getElementById('guardianChar');
-            const diagnosisResult = document.getElementById('diagnosisResult');
-            const diagnosisContent = document.getElementById('diagnosisContent');
-
-            // 龍体文字で名前表示
-            ryutaiName.innerHTML = '';
-            for (let char of convertedName) {
-                const span = document.createElement('span');
-                span.textContent = char;
-                ryutaiName.appendChild(span);
-            }
-
-            // 守護文字選定（最初の文字を基本とする）
-            const guardian = convertedName[0];
-            guardianChar.textContent = guardian;
-
-            // 診断結果生成
-            const meanings = convertedName.split('').map(char => ryutaiMeanings[char] || '未知のエネルギー');
             
-            const diagnosis = generateDiagnosis(convertedName, meanings);
-            diagnosisContent.innerHTML = diagnosis;
-
+            const convertedName = convertToRyutai(userName);
+            const chars = convertedName.split('');
+            
+            // 龍体文字表示
+            const nameDisplay = document.getElementById('nameDisplay');
+            const dragonChars = document.getElementById('dragonNameChars');
+            const guardianChar = document.getElementById('guardianChar');
+            
+            dragonChars.innerHTML = chars.map(char => `<span>${char}</span>`).join('');
+            
+            // 守護文字選出（最初の文字をデフォルトとして）
+            const guardian = chars[0];
+            guardianChar.textContent = guardian;
+            
             nameDisplay.style.display = 'block';
-            diagnosisResult.classList.add('show');
+            
+            // 鑑定書生成
+            setTimeout(() => {
+                generateNameAnalysis(chars, guardian);
+            }, 1000);
         }
 
-        function generateDiagnosis(name, meanings) {
-            return `
-                <h4>🌟 基本性格</h4>
-                <p>「${name}」という名前から、${meanings[0]}のエネルギーを基調とした性格をお持ちです。${meanings.slice(1, 3).join('、')}といった特質も併せ持ち、バランスの取れた魅力的な人格を形成しています。</p>
+        function generateNameAnalysis(chars, guardian) {
+            const resultDiv = document.getElementById('nameResult');
+            const analysisDiv = document.getElementById('nameAnalysis');
+            
+            const meanings = chars.map(char => ryutaiMeanings[char] || '未知のエネルギー');
+            
+            let analysis = `
+                <div style="margin-bottom: 20px;">
+                    <h4>🌟 基本性格</h4>
+                    <p>あなたの名前に含まれる龍体文字「${chars.join('・')}」の組み合わせから、${meanings[0].split('、')[0]}の特質を持つ、とても特別な存在であることがわかります。全体的に調和のとれた、周囲に良い影響を与える人格の持ち主です。</p>
+                </div>
                 
-                <h4>💪 才能・長所</h4>
-                <p>あなたの特別な才能は、名前に込められた龍体文字のエネルギーから生まれます。特に${meanings[0]}の力が強く、周囲の人々に良い影響を与える存在です。</p>
+                <div style="margin-bottom: 20px;">
+                    <h4>💪 才能・長所</h4>
+                    <p>${meanings.slice(0, 2).map(m => m.split('、')[0]).join('と')}の力を併せ持ち、人々を癒し導く天性の才能があります。特に人間関係において、その調和のエネルギーが発揮されるでしょう。</p>
+                </div>
                 
-                <h4>⚠️ 注意点</h4>
-                <p>強いエネルギーを持つ分、時として疲れやすい傾向があります。適度な休息とバランスを心がけることで、より良い人生を歩めるでしょう。</p>
+                <div style="margin-bottom: 20px;">
+                    <h4>⚠️ 注意点</h4>
+                    <p>エネルギーが強い分、時に疲れやすい傾向があります。定期的な休息と、自分自身を大切にする時間を作ることが重要です。</p>
+                </div>
                 
-                <h4>🍀 運勢</h4>
-                <p>あなたの龍体文字は全体的に調和のとれたエネルギーを示しており、今後の人生において着実な成長と幸せが期待できます。</p>
+                <div style="margin-bottom: 20px;">
+                    <h4>🍀 運勢</h4>
+                    <p>「${guardian}」があなたの守護文字として、これからの人生を力強くサポートしてくれます。${ryutaiMeanings[guardian]}のエネルギーが、あなたの運命を良い方向へ導くでしょう。</p>
+                </div>
+                
+                <div>
+                    <h4>💎 開運アドバイス</h4>
+                    <p>日々の生活の中で、感謝の気持ちを忘れずに過ごすことで、龍体文字のエネルギーがより強く働きます。朝の時間に深呼吸をして、今日一日の幸せを願うことを習慣にしてみてください。</p>
+                </div>
             `;
+            
+            analysisDiv.innerHTML = analysis;
+            resultDiv.style.display = 'block';
         }
 
-        // 相性診断機能
-        function diagnoseCompatibility() {
+        // 相性診断
+        function checkCompatibility() {
             const userName = document.getElementById('userName').value.trim();
             const partnerName = document.getElementById('partnerName').value.trim();
             
@@ -845,98 +947,124 @@
                 alert('両方の名前を入力してください');
                 return;
             }
-
-            const userConverted = convertToRyutai(userName);
-            const partnerConverted = convertToRyutai(partnerName);
             
-            const compatibility = calculateCompatibility(userConverted, partnerConverted);
-            showCompatibilityResult(userName, partnerName, compatibility);
-        }
-
-        function calculateCompatibility(name1, name2) {
-            const chars1 = name1.split('');
-            const chars2 = name2.split('');
+            const userChars = convertToRyutai(userName).split('');
+            const partnerChars = convertToRyutai(partnerName).split('');
             
-            let commonChars = 0;
-            let totalChars = Math.max(chars1.length, chars2.length);
+            // 共通文字を探す
+            const commonChars = userChars.filter(char => partnerChars.includes(char));
+            const totalChars = new Set([...userChars, ...partnerChars]).size;
+            const compatibilityScore = Math.round((commonChars.length / Math.max(userChars.length, partnerChars.length)) * 100);
             
-            // 共通する文字をカウント
-            chars1.forEach(char => {
-                if (chars2.includes(char)) {
-                    commonChars++;
-                }
-            });
-            
-            // 基本相性度計算
-            let baseCompatibility = (commonChars / totalChars) * 100;
-            
-            // ランダム要素を加えて調整
-            const randomFactor = Math.random() * 30 - 15; // -15から+15の範囲
-            let finalCompatibility = Math.max(0, Math.min(100, baseCompatibility + randomFactor));
-            
-            return Math.round(finalCompatibility);
-        }
-
-        function showCompatibilityResult(user, partner, percentage) {
-            const compatibilityResult = document.getElementById('compatibilityResult');
-            const compatibilityContent = document.getElementById('compatibilityContent');
-            
-            let rank, rankClass, description;
-            
-            if (percentage <= 20) {
+            let rank, rankClass, rankEmoji;
+            if (compatibilityScore <= 20) {
                 rank = '赤龍ランク';
                 rankClass = 'rank-red';
-                description = 'お互いを高め合える関係です。違いを認め合うことで素晴らしいパートナーシップを築けます。';
-            } else if (percentage <= 40) {
+                rankEmoji = '🔴';
+            } else if (compatibilityScore <= 40) {
                 rank = '黄龍ランク';
                 rankClass = 'rank-yellow';
-                description = '良好な関係を築ける相性です。お互いの良さを引き出し合える関係性があります。';
-            } else if (percentage <= 80) {
+                rankEmoji = '🟡';
+            } else if (compatibilityScore <= 80) {
                 rank = '青龍ランク';
                 rankClass = 'rank-blue';
-                description = '非常に相性の良い組み合わせです。自然体でいられる、心地よい関係を築けるでしょう。';
-            } else if (percentage <= 95) {
+                rankEmoji = '🔵';
+            } else if (compatibilityScore <= 95) {
                 rank = '白龍ランク';
                 rankClass = 'rank-white';
-                description = '運命的な出会いの可能性があります。深い絆で結ばれた特別な関係性です。';
+                rankEmoji = '⚪';
             } else {
                 rank = '虹龍ランク';
                 rankClass = 'rank-rainbow';
-                description = '奇跡的な相性です！まさに運命の相手と言える、最高のパートナーシップが期待できます。';
+                rankEmoji = '🌈';
             }
             
-            compatibilityContent.innerHTML = `
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <h4>${user} × ${partner}</h4>
-                    <div style="font-size: 2rem; margin: 15px 0;">❤️ ${percentage}%</div>
-                </div>
+            const resultDiv = document.getElementById('compatibilityResult');
+            const analysisDiv = document.getElementById('compatibilityAnalysis');
+            
+            analysisDiv.innerHTML = `
                 <div class="dragon-rank ${rankClass}">
-                    ${rank}
+                    ${rankEmoji} ${rank} ${compatibilityScore}%
                 </div>
-                <p>${description}</p>
+                
+                <div style="margin: 20px 0;">
+                    <h4>💖 相性分析</h4>
+                    <p>${userName}さんと${partnerName}さんの龍体文字には、${commonChars.length}個の共通エネルギーが見つかりました。${rank}として、${getRankDescription(rank)}の関係性を築くことができるでしょう。</p>
+                </div>
+                
+                <div style="margin: 20px 0;">
+                    <h4>✨ 共通の龍体文字</h4>
+                    <p style="font-family: 'DragonFont', serif; font-size: 24px; color: #ffd700; text-align: center;">
+                        ${commonChars.length > 0 ? commonChars.join(' ') : 'なし'}
+                    </p>
+                </div>
+                
+                <div>
+                    <h4>💫 関係向上のアドバイス</h4>
+                    <p>${getCompatibilityAdvice(rank)}</p>
+                </div>
             `;
             
-            compatibilityResult.classList.add('show');
+            resultDiv.style.display = 'block';
         }
 
-        // SNSシェア機能
-        function shareToTwitter() {
-            const text = '龍体文字占いで運勢をチェックしました！ #龍体文字占い #スピリチュアル';
-            const url = window.location.href;
-            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
+        function getRankDescription(rank) {
+            const descriptions = {
+                '赤龍ランク': '情熱的で刺激的',
+                '黄龍ランク': '明るく活力に満ちた',
+                '青龍ランク': '安定した信頼できる',
+                '白龍ランク': '純粋で深い絆の',
+                '虹龍ランク': '奇跡的で完璧な'
+            };
+            return descriptions[rank] || '特別な';
         }
 
-        function shareToInstagram() {
-            alert('スクリーンショットを撮ってInstagramでシェアしてくださいね✨');
+        function getCompatibilityAdvice(rank) {
+            const advice = {
+                '赤龍ランク': 'お互いの違いを認め合うことで、新しい発見がたくさんあるでしょう。',
+                '黄龍ランク': '明るいコミュニケーションを心がけることで、関係がより良くなります。',
+                '青龍ランク': '安定した関係性を大切にし、お互いを支え合っていきましょう。',
+                '白龍ランク': '純粋な気持ちを大切にし、深い信頼関係を築いてください。',
+                '虹龍ランク': '奇跡的な出会いに感謝し、この素晴らしい縁を大切にしてください。'
+            };
+            return advice[rank] || 'お互いを理解し合うことが大切です。';
         }
+
+        // シェア機能
+        function shareTwitter() {
+            const text = encodeURIComponent('龍体文字占いで運勢をチェックしました！✨ あなたも試してみませんか？');
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareInstagram() {
+            alert('結果画面をスクリーンショットして、Instagramに投稿してくださいね！📸✨');
+        }
+
+        function resetAll() {
+            document.getElementById('userName').value = '';
+            document.getElementById('partnerName').value = '';
+            document.getElementById('nameDisplay').style.display = 'none';
+            document.getElementById('nameResult').style.display = 'none';
+            document.getElementById('compatibilityResult').style.display = 'none';
+            document.getElementById('todayFortuneResult').style.display = 'none';
+            document.getElementById('todayRouletteChar').textContent = 'あ';
+            document.getElementById('todayMegaSparkle').innerHTML = '';
+        }
+
+        // 初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初期表示設定
+            console.log('龍体文字占いサイトが読み込まれました');
+        });
     </script>
 
 
     <script id="html_badge_script1">
         window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
-            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDpBYuEefmpwLP9wRICbvJECfXD%2BGtgrnZSImjhjaxZrKz%2BPttNiFgl4SS%2B4hGxKDLY5JPPnND813wSBASSK2jsP%2BA52RNHQbXNORJ0B3N%2B3NWZdnSUCjwku3kBKVkEZ2pzi9s3EfKYqEvZ2eJwXgw26kpHZ7Ym2xLKvtnqHbVKQt5BgmfKqZMM1nYPg7hIK6Xq6KMadolmcq5UHWPZ4sv0%2BQGeBWsD2XSqRpAfLq6x4U0%2FCQ0ikd1aSfcNWbE3ny3hvqPcE2Rj3pP3hPUyvqiMNGGaZRNyk4Kktd3YaSMFdZbujljoaXoFO0%2F49fJSMreB0H%2B9RbS2ptIFY8JIGGdpY4XBA7uPAHIQ6rrrBx3fkGMZCREuJbo9jjhMpwzN2Hej83TXDxpd6zPzsoA5qrBvuM%2BEEM047744BsSza4%2BiT05COVdgMW%2B74%2BxysbbGQ%2F2eSVQRrNAHOGYjahPmWHq0%2BOYeJOttn%2F80d8nwkpV5eDtSkyuRux2uPffyyVeXzSib0V0D1CjhVsrVhXxobnTCE%3D";
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDs0KBCLwP0PJd3CsMepZSkRjRZxptpfBfUoed17qvaW6bhrCu4P94oACHv3hwGIuWLqLoLYYBZAyTFkAS8ivCkY5PVQ3tuU0SRE%2BNmixhiBAr6%2Bii%2BuDnCUsU3y29RSeNsnOr3kZ%2BJHXhd8szi0qDQvm7nZn%2Fqs7ir0WjDk9B2oid0iMDrXRP3Yy4m6SoaGTlU4GTDoLzT6QROA44Opzc1fekM%2Flj4RBPf7Q9kIrqzTasl8gv95kIyZYLx3a6A%2BXd8CQyWmXtDUw1k6Ug7oP18xtS3HtMtKlN58QzRBUKZzbIqhQv4NQKaUs4kD21mV%2FUpQQCTMgP11OT8TX%2Fz5drAZHmyEwWnErOaNZ5qmtEfGQ6n8xjU16%2BbkVJFI1NcRlM2BJSVsCglHxA4mPBF1pX1GkXT8RB8TJxlaw8%2F%2FAxD05tBnFE8ALFjK1W%2BbZOYn0dECTymP%2FaGACkhXry566i0eT%2BnJT9chXd7Mq%2B6xw4bMd3foxr8u6nspYRRmDRoCiswDjoCzaKWo%2FOJ9HTAbM0DM%3D";
         window.__genspark_locale = "ja-JP";
-        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDpBYuEefmpwLP9wRICbvJECfXD+GtgrnZSImjhjaxZrKz+PttNiFgl4SS+4hGxKDLY5JPPnND813wSBASSK2jsP+A52RNHQbXNORJ0B3N+3NWZdnSUCjwku3kBKVkEZ2pzi9s3EfKYqEvZ2eJwXgw26kpHZ7Ym2xLKvtnqHbVKQt5BgmfKqZMM1nYPg7hIK6Xq6KMadolmcq5UHWPZ4sv0+QGeBWsD2XSqRpAfLq6x4U0/CQ0ikd1aSfcNWbE3ny3hvqPcE2Rj3pP3hPUyvqiMNGGaZRNyk4Kktd3YaSMFdZbujljoaXoFO0/49fJSMreB0H+9RbS2ptIFY8JIGGdpY4XBA7uPAHIQ6rrrBx3fkGMZCREuJbo9jjhMpwzN2Hej83TXDxpd6zPzsoA5qrBvuM+EEM047744BsSza4+iT05COVdgMW+74+xysbbGQ/2eSVQRrNAHOGYjahPmWHq0+OYeJOttn/80d8nwkpV5eDtSkyuRux2uPffyyVeXzSib0V0D1CjhVsrVhXxobnTCE=";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDs0KBCLwP0PJd3CsMepZSkRjRZxptpfBfUoed17qvaW6bhrCu4P94oACHv3hwGIuWLqLoLYYBZAyTFkAS8ivCkY5PVQ3tuU0SRE+NmixhiBAr6+ii+uDnCUsU3y29RSeNsnOr3kZ+JHXhd8szi0qDQvm7nZn/qs7ir0WjDk9B2oid0iMDrXRP3Yy4m6SoaGTlU4GTDoLzT6QROA44Opzc1fekM/lj4RBPf7Q9kIrqzTasl8gv95kIyZYLx3a6A+Xd8CQyWmXtDUw1k6Ug7oP18xtS3HtMtKlN58QzRBUKZzbIqhQv4NQKaUs4kD21mV/UpQQCTMgP11OT8TX/z5drAZHmyEwWnErOaNZ5qmtEfGQ6n8xjU16+bkVJFI1NcRlM2BJSVsCglHxA4mPBF1pX1GkXT8RB8TJxlaw8//AxD05tBnFE8ALFjK1W+bZOYn0dECTymP/aGACkhXry566i0eT+nJT9chXd7Mq+6xw4bMd3foxr8u6nspYRRmDRoCiswDjoCzaKWo/OJ9HTAbM0DM=";
     </script>
     
     <script id="html_notice_dialog_script" src="./index_files/notice_dialog.js"></script>
